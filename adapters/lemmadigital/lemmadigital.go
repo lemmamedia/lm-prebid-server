@@ -51,7 +51,7 @@ func (a *adapter) MakeRequests(request *openrtb2.BidRequest, requestInfo *adapte
 		}}
 	}
 
-	endpoint, err := a.buildEndpointURL(impExt)
+	endpoint, err := a.buildEndpointURL(impExt, isDoohInventory(request))
 	if err != nil {
 		return nil, []error{err}
 	}
@@ -107,8 +107,16 @@ func (a *adapter) MakeBids(request *openrtb2.BidRequest, requestData *adapters.R
 	return bidResponse, nil
 }
 
-func (a *adapter) buildEndpointURL(params openrtb_ext.ImpExtLemmaDigital) (string, error) {
+func (a *adapter) buildEndpointURL(params openrtb_ext.ImpExtLemmaDigital, isDooh bool) (string, error) {
+	host := params.Host
+	if isDooh {
+		host = "dooh." + host
+	}
 	endpointParams := macros.EndpointTemplateParams{PublisherID: strconv.Itoa(params.PublisherId),
-		AdUnit: strconv.Itoa(params.AdId), Host: params.Host}
+		AdUnit: strconv.Itoa(params.AdId), Host: host}
 	return macros.ResolveMacros(a.endpoint, endpointParams)
+}
+
+func isDoohInventory(req *openrtb2.BidRequest) bool {
+	return nil != req.DOOH
 }

@@ -12,3 +12,7 @@ capabilities:
     mediaTypes:
       - banner
       - video
+  dooh:
+    mediaTypes:
+      - banner
+      - video
