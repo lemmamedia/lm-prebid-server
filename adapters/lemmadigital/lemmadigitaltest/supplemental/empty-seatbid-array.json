@@ -24,7 +24,7 @@
         "bidder": {
           "aid": 1,
           "pid": 1,
-          "host": "sg.ads"
+          "host": "sg"
         }
       },
       "id": "test-imp-id-video",
@@ -69,7 +69,7 @@
             "bidder": {
               "aid": 1,
               "pid": 1,
-              "host": "sg.ads"
+              "host": "sg"
             }
           },
           "id": "test-imp-id-video",

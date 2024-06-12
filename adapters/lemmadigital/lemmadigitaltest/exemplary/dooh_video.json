@@ -17,7 +17,7 @@
           "bidder": {
             "aid": 1,
             "pid": 1,
-            "host": "sg.ads"
+            "host": "sg"
           }
         }
       }],
@@ -49,7 +49,7 @@
               "bidder": {
                 "aid": 1,
                 "pid": 1,
-                "host": "sg.ads"
+                "host": "sg"
               }
             }
           }],
